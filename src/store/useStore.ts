@@ -46,7 +46,7 @@ export const useStore = create<StoreState>()(
                 tasks: state.tasks.filter((t) => t.id !== id)
             })),
             resetDay: () => set((state) => ({
-                tasks: state.tasks.map((t) => ({ ...t, completed: false })),
+                tasks: [],
                 lastResetDate: new Date().toDateString(),
                 showResetAnimation: true
             })),
