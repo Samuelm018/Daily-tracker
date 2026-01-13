@@ -2,7 +2,6 @@
 import { useState, useRef } from 'react'
 import { useStore } from '@/store/useStore'
 import { Download, RotateCw } from 'lucide-react'
-import { motion } from 'framer-motion'
 import html2canvas from 'html2canvas'
 
 export function ActionMenu() {

@@ -6,9 +6,13 @@ export function LiveClock() {
     const [time, setTime] = useState<Date | null>(null)
 
     useEffect(() => {
-        setTime(new Date())
+        // Avoid synchronous setState warning by wrapping in timeout
+        const timeout = setTimeout(() => setTime(new Date()), 0)
         const timer = setInterval(() => setTime(new Date()), 1000)
-        return () => clearInterval(timer)
+        return () => {
+            clearTimeout(timeout)
+            clearInterval(timer)
+        }
     }, [])
 
     if (!time) return <div className="h-16 w-32 bg-white/5 animate-pulse rounded-lg" />
