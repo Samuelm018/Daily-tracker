@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useStore } from '@/store/useStore'
-import { Plus } from 'lucide-react'
+import { SendHorizontal } from 'lucide-react'
 
 export function AddTask() {
     const [text, setText] = useState('')
@@ -17,16 +17,20 @@ export function AddTask() {
     return (
         <form onSubmit={handleSubmit} className="w-full px-6 mb-4">
             <div className="relative group">
-                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                    <Plus className="text-white/30 group-focus-within:text-neon-blue transition-colors" />
-                </div>
                 <input
                     type="text"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Add a daily task..."
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-blue/50 focus:bg-white/10 transition-all text-lg"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-4 pr-12 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-blue/50 focus:bg-white/10 transition-all text-lg"
                 />
+                <button
+                    type="submit"
+                    className="absolute inset-y-0 right-2 flex items-center justify-center p-2 text-white/30 hover:text-neon-blue transition-colors disabled:opacity-50"
+                    disabled={!text.trim()}
+                >
+                    <SendHorizontal size={24} />
+                </button>
             </div>
         </form>
     )
